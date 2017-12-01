@@ -91,4 +91,14 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
         return $this->isSameTypeAs($set, $flags)
             && $this->isSameObjectAs($set, $flags);
     }
+
+    /**
+     * Return the type of the object
+     *
+     * @return string
+     */
+    public static function getType(): string
+    {
+        return 'SET';
+    }
 }
