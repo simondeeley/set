@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 namespace simondeeley;
 
+use SplFixedArray;
 use simondeeley\Type\Type;
 use simondeeley\Type\SetType;
 use simondeeley\Type\TypeEquality;
