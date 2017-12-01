@@ -8,7 +8,7 @@ declare(strict_types=1);
  * @copyright Simon Deeley 2017
  */
 
-namespace simondeeley\Type;
+namespace simondeeley;
 
 use simondeeley\Type\Type;
 use simondeeley\Type\SetType;
