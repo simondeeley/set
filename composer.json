@@ -1,0 +1,41 @@
+{
+    "name": "simondeeley/set",
+    "description": "PHP implementation of a mathematical set",
+    "type": "library",
+    "keywords": ["php", "set", "immutable"],
+    "homepage": "https://github.com/simondeeley",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Simon Deeley",
+            "email": "s.deeley@icloud.com",
+            "homepage": "https://github.com/simondeeley",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/simondeeley/set/isues",
+        "source": "https://github.com/simondeeley/set",
+        "docs": "https://github.com/simondeeley/set/blob/master/README.md"
+    },
+    "require": {
+        "php": "~7.1",
+        "simondeeley/type": "~1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "simondeeley\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "simondeeley\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
