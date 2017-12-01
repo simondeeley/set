@@ -41,7 +41,7 @@ final class SetTest extends TestCase
             ->getMock()
         ;
 
-        $this->$this->assertTrue($one->equals($two));
+        $this->assertTrue($one->equals($two));
     }
 
     /**
@@ -65,7 +65,7 @@ final class SetTest extends TestCase
             ->getMock()
         ;
 
-        $this->$this->assertFalse($one->equals($two));
+        $this->assertFalse($one->equals($two));
     }
 
     /**
