@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace simondeeley\Tests;
 
 use simondeeley\Set;
+use simondeeley\Type\TypeEquality;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,15 +36,16 @@ final class SetTest extends TestCase
             ->setConstructorArgs($setOne)
             ->getMock()
         ;
-        $one = $this->mockInternalCalls($one);
 
         $two = $this->getMockBuilder(Set::class)
             ->setConstructorArgs($setTwo)
             ->getMock()
         ;
-        $two = $this->mockInternalCalls($two);
 
-        $this->assertTrue($one->equals($two));
+        $this->assertTrue($one->equals(
+            $two,
+            TypeEquality::IGNORE_OBJECT_IDENTITY | TypeEquality::IGNORE_OBJECT_TYPE
+        ));
     }
 
     /**
@@ -61,15 +63,16 @@ final class SetTest extends TestCase
             ->setConstructorArgs($setOne)
             ->getMock()
         ;
-        $one = $this->mockInternalCalls($one);
 
         $two = $this->getMockBuilder(Set::class)
             ->setConstructorArgs($setTwo)
             ->getMock()
         ;
-        $two = $this->mockInternalCalls($two);
 
-        $this->assertFalse($one->equals($two));
+        $this->assertFalse($one->equals(
+            $two,
+            TypeEquality::IGNORE_OBJECT_IDENTITY | TypeEquality::IGNORE_OBJECT_TYPE
+        ));
     }
 
     /**
@@ -102,26 +105,5 @@ final class SetTest extends TestCase
             [[ 'foo' ], [ 'bar' ]],
             [[ true ], [ false ]],
         ];
-    }
-
-    /**
-     * Mock calls which  internally call static methods
-     *
-     * @param mixed $mock
-     * @return mixed
-     */
-    final protected function mockInternalCalls($mock)
-    {
-        $mock->expects($this->any())
-            ->method('isSameTypeAs')
-            ->will($this->returnValue(true))
-        ;
-
-        $mock->expects($this->any())
-            ->method('isSameObjectAs')
-            ->will($this->returnValue(true))
-        ;
-
-        return $mock;
     }
 }
