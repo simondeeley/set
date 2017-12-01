@@ -49,7 +49,7 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
      */
     final public function __construct(...$items)
     {
-        $this->data = SplFixedArray::fromArray($data);
+        $this->data = SplFixedArray::fromArray($items);
     }
 
     /**
