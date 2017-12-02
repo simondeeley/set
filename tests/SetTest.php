@@ -33,12 +33,12 @@ final class SetTest extends TestCase
     final public function shouldShowEqualityBetweenTwoEqualSets(array $setOne, array $setTwo): void
     {
         $one = $this->getMockBuilder(Set::class)
-            ->setConstructorArgs(...$setOne)
+            ->setConstructorArgs($setOne)
             ->getMock()
         ;
 
         $two = $this->getMockBuilder(Set::class)
-            ->setConstructorArgs(...$setTwo)
+            ->setConstructorArgs($setTwo)
             ->getMock()
         ;
 
@@ -60,12 +60,12 @@ final class SetTest extends TestCase
     final public function shouldShowInequalityBetweenTwoUnequalSets(array $setOne, array $setTwo): void
     {
         $one = $this->getMockBuilder(Set::class)
-            ->setConstructorArgs(...$setOne)
+            ->setConstructorArgs($setOne)
             ->getMock()
         ;
 
         $two = $this->getMockBuilder(Set::class)
-            ->setConstructorArgs(...$setTwo)
+            ->setConstructorArgs($setTwo)
             ->getMock()
         ;
 
