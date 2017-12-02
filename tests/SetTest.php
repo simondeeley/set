@@ -86,7 +86,7 @@ final class SetTest extends TestCase
             [[ 1, 2, 3 ], [ 1, 2, 3 ]],
             [[ 1, 2, 3 ], [ 3, 2, 1 ]],
             [[ 1, 2, 3 ], [ 1, 2, 2, 3 ]],
-            [[ 'foo', 'bar '], [ 'bar', 'foo' ]],
+            [[ 'foo', 'bar'], [ 'bar', 'foo' ]],
             [[ true ], [ true ]],
         ];
     }
