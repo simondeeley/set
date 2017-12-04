@@ -73,8 +73,8 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
             ));
         }
 
-        return $this->isInArray($this->data, $set->data->toArray())
-            && $this->isInArray($set->data, $this->data->toArray())
+        return $this->isInArray($this->data->toArray(), $set->data->toArray())
+            && $this->isInArray($set->data->toArray(), $this->data->toArray())
             && $this->isSameTypeAs($set, $flags)
             && $this->isSameObjectAs($set, $flags);
     }
