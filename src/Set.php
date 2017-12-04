@@ -73,24 +73,28 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
             ));
         }
 
-        // Loop through items in $this, if any do not exist in $set then the
-        // two Sets are not equal.
-        foreach ($this->data as $item) {
-            if (false === in_array($item, $set->data->toArray(), true)) {
-                return false;
-            }
-        }
-
-        // Loop through items in $set. If any do not exist in $this then they
-        // they are not equal.
-        foreach ($set->data as $item) {
-            if (false === in_array($item, $this->data->toArray(), true)) {
-                return false;
-            }
-        }
-
-        return $this->isSameTypeAs($set, $flags)
+        return $this->isInArray($this->data, $set->data->toArray())
+            && $this->isInArray($set->data, $this->data->toArray())
+            && $this->isSameTypeAs($set, $flags)
             && $this->isSameObjectAs($set, $flags);
+    }
+
+    /**
+     * Helper function for evaluate differences between two arrays
+     *
+     * @param array $first
+     * @param array $second
+     * @return bool
+     */
+    final private function isInArray(array $first, array $second): bool
+    {
+        foreach ($first as $item) {
+            if (false === in_array($item, $second, true)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
