@@ -73,8 +73,8 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
             ));
         }
 
-        return $this->isInArray($this->data->toArray(), $set->data->toArray())
-            && $this->isInArray($set->data->toArray(), $this->data->toArray())
+        return $this->isInArray($this, $set)
+            && $this->isInArray($set, $this)
             && $this->isSameTypeAs($set, $flags)
             && $this->isSameObjectAs($set, $flags);
     }
@@ -82,14 +82,14 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
     /**
      * Helper function for evaluate differences between two arrays
      *
-     * @param array $first
-     * @param array $second
+     * @param Set $first
+     * @param Set $second
      * @return bool
      */
-    final private function isInArray(array $first, array $second): bool
+    final private function isInArray(Set $first, Set $second): bool
     {
-        foreach ($first as $item) {
-            if (false === in_array($item, $second, true)) {
+        foreach ($first->data as $item) {
+            if (false === in_array($item, $second->data->toArray(), true)) {
                 return false;
             }
         }
