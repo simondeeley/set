@@ -75,7 +75,7 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
 
         // Loop through items in $this, if any do not exist in $set then the
         // two Sets are not equal.
-        foreach($this->data as $item) {
+        foreach ($this->data as $item) {
             if (false === in_array($item, $set->data->toArray(), true)) {
                 return false;
             }
