@@ -69,7 +69,7 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
             throw new InvalidArgumentException(sprintf(
                 'Cannot compare %s with %s as they are not of the same type',
                 get_class($this),
-                get_class($tuple)
+                get_class($set)
             ));
         }
 
