@@ -11,6 +11,7 @@ declare(strict_types=1);
 namespace simondeeley\Tests;
 
 use simondeeley\Set;
+use simondeeley\Type\TypeEquality;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -41,7 +42,10 @@ final class SetTest extends TestCase
             ->getMock()
         ;
 
-        $this->$this->assertTrue($one->equals($two));
+        $this->assertTrue($one->equals(
+            $two,
+            TypeEquality::IGNORE_OBJECT_IDENTITY | TypeEquality::IGNORE_OBJECT_TYPE
+        ));
     }
 
     /**
@@ -65,7 +69,10 @@ final class SetTest extends TestCase
             ->getMock()
         ;
 
-        $this->$this->assertFalse($one->equals($two));
+        $this->assertFalse($one->equals(
+            $two,
+            TypeEquality::IGNORE_OBJECT_IDENTITY | TypeEquality::IGNORE_OBJECT_TYPE
+        ));
     }
 
     /**
@@ -79,8 +86,8 @@ final class SetTest extends TestCase
             [[ 1, 2, 3 ], [ 1, 2, 3 ]],
             [[ 1, 2, 3 ], [ 3, 2, 1 ]],
             [[ 1, 2, 3 ], [ 1, 2, 2, 3 ]],
-            [[ 'foo', 'bar '], [ 'bar', 'foo' ]],
-            [[ true ], [ false ]],
+            [[ 'foo', 'bar'], [ 'bar', 'foo' ]],
+            [[ true ], [ true ]],
         ];
     }
 

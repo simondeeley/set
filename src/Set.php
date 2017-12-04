@@ -49,7 +49,7 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
      */
     final public function __construct(...$items)
     {
-        $this->data = SplFixedArray::fromArray($data);
+        $this->data = SplFixedArray::fromArray($items);
     }
 
     /**
@@ -75,7 +75,7 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
         // Loop through items in $this, if any do not exist in $set then the
         // two Sets are not equal.
         foreach($this->data as $item) {
-            if (0 === count(array_search($item, $set->data, true))) {
+            if (false === in_array($item, $set->data->toArray(), true)) {
                 return false;
             }
         }
@@ -83,12 +83,22 @@ abstract class Set extends ImmutableArrayTypeObject implements SetType, TypeEqua
         // Loop through items in $set. If any do not exist in $this then they
         // they are not equal.
         foreach ($set->data as $item) {
-            if (false === count(array_search($item, $this->data, true))) {
+            if (false === in_array($item, $this->data->toArray(), true)) {
                 return false;
             }
         }
 
         return $this->isSameTypeAs($set, $flags)
             && $this->isSameObjectAs($set, $flags);
+    }
+
+    /**
+     * Return the type of the object
+     *
+     * @return string
+     */
+    public static function getType(): string
+    {
+        return 'SET';
     }
 }
